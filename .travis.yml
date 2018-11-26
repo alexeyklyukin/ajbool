@@ -1,12 +1,19 @@
 sudo: required
 dist: xenial
 language: c
+before_install:
+   - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+   - curl -s -o - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+   - sudo apt-get update
+   - sudo sed -ri 's/#(create_main_cluster) .*$/\1 = false/' /etc/postgresql-common/createcluster.conf
 matrix:
    include:
      - addons: 
           postgresql: 9.3
           apt:
             packages:
+               - postgresql-9.3
+               - postgresql-client-9.3
                - postgresql-server-dev-9.3
        env:
           - POSTGRESQL=9.3
