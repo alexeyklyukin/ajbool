@@ -55,6 +55,18 @@ matrix:
           - POSTGRESQL=10
        install:
            - sudo make install
+     - addons:
+          postgresql: 11 
+          apt:
+            packages:
+               - postgresql-11
+               - postgresql-client-11
+               - postgresql-server-dev-11
+       env:
+          - POSTGRESQL=11
+          - PGPORT=5433
+       install:
+         - sudo make install
 script:
   - make installcheck
 after_failure:
