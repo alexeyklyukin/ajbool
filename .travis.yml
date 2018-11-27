@@ -16,9 +16,8 @@ matrix:
                - postgresql-server-dev-9.3
        env:
           - POSTGRESQL=9.3
-       before_install:
-           - sudo service postgresql start
        install:
+           - sudo service postgresql start
            - sudo make install
      - addons: 
           postgresql: 9.4
