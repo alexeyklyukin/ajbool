@@ -16,8 +16,8 @@ matrix:
                - postgresql-server-dev-9.3
        env:
           - POSTGRESQL=9.3
+          - PGPORT=5433
        install:
-           - sudo service postgresql start
            - sudo make install
      - addons: 
           postgresql: 9.4
